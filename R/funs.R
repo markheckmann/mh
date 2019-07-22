@@ -29,13 +29,16 @@ format_dec <- function(x, digits = 2)
 #' @export
 #' @rdname make-names
 #' @examples
+#'  library(dplyr)
+#'
 #'  # workhorse: character vector
 #'  "12var_äüß//__stuff" %>% make_names
 #'
 #'  # dataframe: make pretty colnames
 #'  iris %>% make_names %>% names
 #'
-make_names <- function(x, ...) {
+make_names <- function(x, ...)
+{
   UseMethod("make_names")
 }
 
@@ -43,6 +46,7 @@ make_names <- function(x, ...) {
 #' @export
 #' @rdname make-names
 #' @importFrom textclean replace_non_ascii
+#' @importFrom stringr str_replace_all
 #'
 make_names.default <- function(x)
 {

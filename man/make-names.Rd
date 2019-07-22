@@ -20,6 +20,8 @@ Similar to \code{\link{make.names}} but does
 more replacements and uses camel case.
 }
 \examples{
+ library(dplyr)
+
  # workhorse: character vector
  "12var_Ã¤Ã¼ÃŸ//__stuff" \%>\% make_names
 

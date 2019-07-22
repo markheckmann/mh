@@ -9,6 +9,7 @@ Description: Collection of miscellaneous functions I find
     useful.
 Imports:
   textclean,
+  stringr,
   dplyr,
   magrittr
 License: GPL>=3
