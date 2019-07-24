@@ -4,6 +4,7 @@
 \alias{make_names}
 \alias{make_names.default}
 \alias{make_names.data.frame}
+\alias{make_names.data.table}
 \title{Prettify variable names}
 \usage{
 make_names(x, ...)
@@ -11,6 +12,8 @@ make_names(x, ...)
 \method{make_names}{default}(x)
 
 \method{make_names}{data.frame}(x)
+
+\method{make_names}{data.table}(x)
 }
 \arguments{
 \item{x}{A character vector or data frame}

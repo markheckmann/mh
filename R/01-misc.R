@@ -74,5 +74,14 @@ make_names.data.frame <- function(x)
 }
 
 
+#' @export
+#' @rdname make-names
+make_names.data.table <- function(x)
+{
+  nms_old <- names(x)
+  nms_new <- nms_old %>% make_names
+  setnames(x, nms_old, nms_new)
+  invisible(x)
+}
 
 
