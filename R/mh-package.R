@@ -3,6 +3,7 @@
 #' @keywords package mh
 #' @name mh-package
 #' @docType package
-#' @import  dplyr
+#' @import  dplyr DBI
 #' @importFrom magrittr "%<>%"
+#' @importFrom scales percent
 NULL

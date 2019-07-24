@@ -2,10 +2,13 @@
 
 S3method(make_names,data.frame)
 S3method(make_names,default)
+export(db_fetch_chunks)
 export(format_dec)
 export(format_int)
 export(make_names)
+import(DBI)
 import(dplyr)
 importFrom(magrittr,"%<>%")
+importFrom(scales,percent)
 importFrom(stringr,str_replace_all)
 importFrom(textclean,replace_non_ascii)
