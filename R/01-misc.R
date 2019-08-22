@@ -58,6 +58,7 @@ make_names.default <- function(x)
   x %>%
     tolower %>%
     textclean::replace_non_ascii() %>%
+    str_replace_all(" +", "_") %>%
     str_replace_all("^[0-9]*", "") %>%
     str_replace_all("[\\.\\(\\)=,\\/:\\-#+*]+", "_") %>%
     str_replace_all("_+", "_") %>%
@@ -84,4 +85,45 @@ make_names.data.table <- function(x)
   invisible(x)
 }
 
+
+#' Set encoding for entire columns in data.frame or data.table
+#'
+#' Wrapper around \code{\link{Encoding}}. Sets all character columns to given encoding.
+#' more replacements and uses camel case. Caveat: Factors are ignored.
+#'
+#' @param x A data.frame or data.table object.
+#' @param value Encoding to set.
+#' @export
+#' @rdname encode_chr_vars
+#' @examples
+#'  xx <- data.frame(a = LETTERS, b = letters, c = 1:26, stringsAsFactors = F)
+
+`encode_chr_vars<-` <- function(x, value)
+{
+  UseMethod("encode_chr_vars<-")
+}
+
+
+#' @export
+#' @rdname encode_chr_vars
+`encode_chr_vars<-.data.frame`  <- function(x, value)
+{
+  jj <- which(sapply(x, is.character))  # position index of character columns
+  for(j in jj) {
+    Encoding(x[[j]]) <- value
+  }
+  x
+}
+
+
+#' @export
+#' @rdname encode_chr_vars
+`encode_chr_vars<-.data.table` <- function(x, value)
+{
+  jj <- which(sapply(x, is.character))  # position index of character columns
+  for(j in jj) {
+    Encoding(x[[j]]) <- value
+  }
+  invisible(x)
+}
 
